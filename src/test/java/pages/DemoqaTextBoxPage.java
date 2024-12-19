@@ -20,6 +20,11 @@ public class DemoqaTextBoxPage {
 
     public DemoqaTextBoxPage openPage() {
         open("/text-box");
+
+        return this;
+    }
+
+    public DemoqaTextBoxPage removeBanners() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 

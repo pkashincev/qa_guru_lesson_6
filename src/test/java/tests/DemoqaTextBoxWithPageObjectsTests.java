@@ -10,6 +10,7 @@ public class DemoqaTextBoxWithPageObjectsTests extends DemoqaFormBase {
     @Test
     void fillFormTest() {
         page.openPage()
+                .removeBanners()
                 .setFullName("Pavel Kashintsev")
                 .setEmail("test@email.com")
                 .setCurrentAddress("...some current address...")

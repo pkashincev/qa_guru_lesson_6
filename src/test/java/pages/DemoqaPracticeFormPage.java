@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import org.junit.jupiter.api.Assertions;
 import pages.components.CalendarComponent;
 import pages.components.ResultsWindowComponent;
 
@@ -15,7 +14,7 @@ public class DemoqaPracticeFormPage {
     private final SelenideElement email = $("#userEmail");
     private final SelenideElement gender = $("#genterWrapper");
     private final SelenideElement mobileNumber = $("#userNumber");
-    private final SelenideElement dateOfBirthCalendar =  $("#dateOfBirthInput");
+    private final SelenideElement dateOfBirthCalendar = $("#dateOfBirthInput");
     private final SelenideElement subjects = $("#subjectsInput");
     private final SelenideElement hobbies = $("#hobbiesWrapper");
     private final SelenideElement picture = $("#uploadPicture");
@@ -29,6 +28,11 @@ public class DemoqaPracticeFormPage {
 
     public DemoqaPracticeFormPage openPage() {
         open("/automation-practice-form");
+
+        return this;
+    }
+
+    public DemoqaPracticeFormPage removeBanners() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
@@ -120,10 +124,14 @@ public class DemoqaPracticeFormPage {
         return this;
     }
 
-    public DemoqaPracticeFormPage checkVisibilityOfResultsWindow(boolean expected) {
-        boolean actual = resultsWindow.isVisible();
-        if (expected) Assertions.assertTrue(actual);
-        else Assertions.assertFalse(actual);
+    public DemoqaPracticeFormPage checkSuccessfulSubmit() {
+        resultsWindow.isVisible();
+
+        return this;
+    }
+
+    public DemoqaPracticeFormPage checkUnsuccessfulSubmit() {
+        resultsWindow.isHidden();
 
         return this;
     }

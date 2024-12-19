@@ -10,6 +10,7 @@ public class DemoqaPracticeFormWithPageObjectsTests extends DemoqaFormBase {
     @Test
     void fullCompletionFormTest() {
         page.openPage()
+                .removeBanners()
                 .setFirstName("Pavel")
                 .setLastName("Kashintsev")
                 .setEmail("adress@test.com")
@@ -24,7 +25,8 @@ public class DemoqaPracticeFormWithPageObjectsTests extends DemoqaFormBase {
                 .setCity("Karnal")
                 .submitForm();
 
-        page.checkVisibilityOfResultsWindow(true)
+        page.checkSuccessfulSubmit()
+                .removeBanners()
                 .checkHeaderOfResultsWindow("Thanks for submitting the form")
                 .checkHeaderOfResultsTable("Label", "Values")
                 .checkContentOfResultsTable("Student Name", "Pavel Kashintsev")
@@ -42,13 +44,14 @@ public class DemoqaPracticeFormWithPageObjectsTests extends DemoqaFormBase {
     @Test
     void minimumCompletionFormTest() {
         page.openPage()
+                .removeBanners()
                 .setFirstName("Pavel")
                 .setLastName("Kashintsev")
                 .setGender("Male")
                 .setMobileNumber("0123456789")
                 .submitForm();
 
-        page.checkVisibilityOfResultsWindow(true)
+        page.checkSuccessfulSubmit()
                 .checkHeaderOfResultsWindow("Thanks for submitting the form")
                 .checkHeaderOfResultsTable("Label", "Values")
                 .checkContentOfResultsTable("Student Name", "Pavel Kashintsev")
@@ -59,6 +62,7 @@ public class DemoqaPracticeFormWithPageObjectsTests extends DemoqaFormBase {
     @Test
     void invalidEmailTest() {
         page.openPage()
+                .removeBanners()
                 .setFirstName("Pavel")
                 .setLastName("Kashintsev")
                 .setEmail("...some email...")
@@ -73,12 +77,13 @@ public class DemoqaPracticeFormWithPageObjectsTests extends DemoqaFormBase {
                 .setCity("Karnal")
                 .submitForm();
 
-        page.checkVisibilityOfResultsWindow(false);
+        page.checkUnsuccessfulSubmit();
     }
 
     @Test
     void invalidMobileNumberTest() {
         page.openPage()
+                .removeBanners()
                 .setFirstName("Pavel")
                 .setLastName("Kashintsev")
                 .setEmail("adress@test.com")
@@ -93,6 +98,6 @@ public class DemoqaPracticeFormWithPageObjectsTests extends DemoqaFormBase {
                 .setCity("Karnal")
                 .submitForm();
 
-        page.checkVisibilityOfResultsWindow(false);
+        page.checkUnsuccessfulSubmit();
     }
 }
