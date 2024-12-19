@@ -8,10 +8,10 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ResultsWindowComponent {
 
-    public final SelenideElement window = $(".modal-content");
-    public final SelenideElement windowHeader = $(".modal-header");
-    public final SelenideElement table = $(".table");
-    public final SelenideElement tableHeader = $(".table>thead>tr>th");
+    private final SelenideElement window = $(".modal-content");
+    private final SelenideElement windowHeader = $(".modal-header");
+    private final SelenideElement table = $(".table");
+    private final SelenideElement tableHeader = $(".table>thead>tr>th");
 
     public void isVisible() {
         window.shouldBe(visible);
