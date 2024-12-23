@@ -26,7 +26,6 @@ public class DemoqaPracticeFormWithPageObjectsTests extends DemoqaFormBase {
                 .submitForm();
 
         page.checkSuccessfulSubmit()
-                .removeBanners()
                 .checkHeaderOfResultsWindow("Thanks for submitting the form")
                 .checkHeaderOfResultsTable("Label", "Values")
                 .checkContentOfResultsTable("Student Name", "Pavel Kashintsev")
